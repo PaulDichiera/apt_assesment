@@ -13,7 +13,7 @@ class Patient {
         Patient(Patient& other);
         ~Patient();
 
-        void setAdminHistory(std::string adDate, std::string disDate = "N/A", Ward* ward);
+        void setAdminHistory(std::string adDate, std::string disDate = "N/A");
         void getAdminHistory();
 
         std::string name;

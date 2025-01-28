@@ -29,7 +29,7 @@ class Ward {
 
 
     private:
-        Ward* head;
+        PatientRegister* head;
 
 };
 

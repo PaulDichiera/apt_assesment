@@ -23,11 +23,11 @@ Patient::~Patient(){
     // deconstructor
 }
 
-void Patient::setAdminHistory(std::string adDate, std::string disDate = "N/A", Ward* ward){
+void Patient::setAdminHistory(std::string adDate, std::string disDate = "N/A"){
     // check date and ward, if already input update with discharge date.
     // call redNum then call the ward method to find and apply the ward from ward.
     std::string wardName = "test";
-    ward->getWard(this->regNum);
+    // ward.getWard(this->regNum);
     this->adHistory.push_back(std::make_tuple(adDate, disDate, wardName));
 
 }

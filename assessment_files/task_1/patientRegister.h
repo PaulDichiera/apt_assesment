@@ -18,9 +18,8 @@ class PatientRegister {
         
         PatientRegister operator[](const PatientRegister& other);
 
-
-
-
+        std::string wardName;
+        PatientRegister* next;
 
     private:
         Patient* head;

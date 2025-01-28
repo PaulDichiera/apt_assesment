@@ -3,8 +3,8 @@ CC = g++
 CFLAGS = -Wall -Werror -std=c++14 -O
 
 # set files variables
-SOURCES = main.cpp patient.cpp patientRegister.cpp ward.cpp
-OBJECTS = main.o patient.o patientRegister.o ward.o
+SOURCES = main.cpp ward.cpp patient.cpp patientRegister.cpp
+OBJECTS = main.o ward.o patient.o patientRegister.o
 TARGET = build
 
 # default rule 

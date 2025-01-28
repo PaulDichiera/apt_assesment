@@ -5,6 +5,7 @@
 PatientRegister::PatientRegister(){
     // creates the linked list
     head = nullptr;
+    next = nullptr;
 }
 
 PatientRegister::~PatientRegister(){
