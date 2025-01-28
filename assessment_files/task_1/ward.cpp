@@ -5,6 +5,10 @@
 Ward::Ward(){
     // creates 5 wards calling the patient registry 5 times assigning the Enum as a name in the Patient registry data
     // head pointer needs to be assigned
+    this->head = nullptr;
+    
+    PatientRegister* ward1 = new PatientRegister();
+    PatientRegister* ward2 = new PatientRegister();
 
 }
 

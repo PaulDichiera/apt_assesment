@@ -2,10 +2,16 @@
 
 #include "patient.h"
 
-Patient::Patient(std::string name, std::string dob, std::string regNum){
+Patient::Patient(std::string name, std::string dob, Patient* next){
     // name format checks
     // dob format checks
     // regNum, check for copies, if name and dob are correct provide unique number
+
+    this->name = name; // implement validation checks
+    this->dob = dob;   // implement validation checks
+
+    std::string regNum = "test007";
+    this->regNum = regNum;
 
 }
 
@@ -17,10 +23,16 @@ Patient::~Patient(){
     // deconstructor
 }
 
-void setAdminHistory(){
+void Patient::setAdminHistory(std::string adDate, std::string disDate = "N/A", Ward* ward){
     // check date and ward, if already input update with discharge date.
+    // call redNum then call the ward method to find and apply the ward from ward.
+    std::string wardName = "test";
+    ward->getWard(this->regNum);
+    this->adHistory.push_back(std::make_tuple(adDate, disDate, wardName));
+
 }
 
-void getAdminHistory(){
+void Patient::getAdminHistory(){
     // prints admin history listings.
+    // cycle through users vector to print history.
 }

@@ -11,10 +11,10 @@ class PatientRegister {
 
         void addPatient(std::string name, std::string dob);
         void removePatient(std::string regNum);
-        void getPatientNum();
+        int getPatientNum();
         bool checkPatient(std::string regNum);
-        std::string returnPatient(std::string regNum);
-        std::string checkDupe(std::string regNum);
+        void returnPatient(std::string regNum);
+        void checkDupe(std::string regNum);
         
         PatientRegister operator[](const PatientRegister& other);
 
@@ -24,7 +24,6 @@ class PatientRegister {
 
     private:
         Patient* head;
-        Patient* next;
 
 
 };

@@ -3,6 +3,10 @@
 
 #include <iostream>
 
+#include "patientRegister.h"
+
+#define WARD_NUM    5
+
 enum WardName {
     BLUE,
     RED,
