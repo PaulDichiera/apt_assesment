@@ -15,14 +15,14 @@ class Patient {
 
         void setAdminHistory(std::string adDate, std::string disDate = "N/A");
         void getAdminHistory();
-
+    
         std::string name;
         std::string dob;
         std::string regNum;
         std::vector<std::tuple<std::string, std::string, std::string>> adHistory;
+
         Patient* next;
         
-
 };
 
 #endif // PATIENT_H

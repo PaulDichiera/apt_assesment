@@ -5,7 +5,7 @@
 Ward::Ward(){
     // creates 5 wards calling the patient registry 5 times assigning the Enum as a name in the Patient registry data
     // head pointer needs to be assigned
-    this->head = nullptr;
+    head = nullptr;
 
     PatientRegister* BLUE = new PatientRegister();
     BLUE->wardName = "BLUE";
@@ -19,11 +19,12 @@ Ward::Ward(){
     ORANGE->wardName = "ORANGE";
 
     // connect wards in linked list
-    this->head = BLUE;
-    BLUE->next = RED;
-    RED->next = GREEN;
-    GREEN->next = YELLOW;
-    YELLOW->next = ORANGE;
+    head = BLUE;
+    BLUE->nextWard = RED;
+    RED->nextWard = GREEN;
+    GREEN->nextWard = YELLOW;
+    YELLOW->nextWard = ORANGE;
+    ORANGE->nextWard = nullptr;
 
 
 
@@ -35,18 +36,27 @@ Ward::~Ward(){
 }
 
 void Ward::addPatient(std::string name, std::string dob, WardName ward){
-    // calls method in patient registry associated with the appropriate ward to pass patient info and create node for the patient.
     PatientRegister* temp = head;
     std::string wardString = enumToString(ward);
 
-    while(temp->next != nullptr){
+    while(temp != nullptr){
         if(temp->wardName == wardString){
             temp->addPatient(name, dob);
-        }else{
-            temp = temp->next;
         }
+        temp = temp->nextWard;
     }
     
+}
+
+void Ward::removePatient(std::string regNum){
+    PatientRegister* temp = head;
+
+    while(temp->nextWard != nullptr){
+        if(temp->checkPatient(regNum)){
+            temp->removePatient(regNum);
+        }
+        temp = temp->nextWard;
+    }
 }
 
 int Ward::getPatientTotals(){
@@ -54,9 +64,9 @@ int Ward::getPatientTotals(){
     int totals = 0;
     PatientRegister* temp = head;
 
-    while(temp->next != nullptr){
+    while(temp != nullptr){
         totals += temp->getPatientNum();
-        temp = temp->next;
+        temp = temp->nextWard;
     }
 
     return totals;
@@ -67,47 +77,45 @@ int Ward::getWardSize(WardName ward){
     int total = 0;
     PatientRegister* temp = head;
     std::string wardString = enumToString(ward);
-
-    while(temp->next != nullptr){
+    while(temp != nullptr){
         if(temp->wardName == wardString){
             total = temp->getPatientNum();
-        }else{
-            temp = temp->next;
+        }
+        temp = temp->nextWard;
+    }
+    return total;
+}
+
+void Ward::getWard(std::string regNum){
+    PatientRegister* temp = head;
+    if(head == nullptr){
+        std::cout << "There are no patients admitted to this ward" << std::endl;
+    }else{
+        while(temp != nullptr){
+            if(temp->returnPatient(regNum)){
+                std::cout << "Patient can be found on ward: " << temp->wardName << std::endl;
+            }else{
+                temp = temp->nextWard;
+            }
         }
     }
-    return 0;
-}
-
-WardName getWard(std::string regNum){
-    // using a patients regNum find which ward they are on
+    
 
 }
 
-Ward Ward::operator[](const Ward& other){
+void Ward::operator[](const std::string regNum){
     // allow the retrival of patient data via use of the [] operator and the ward name or number
-
+    getWard(regNum);
 }
 
-std::string enumToString(WardName ward){
+std::string Ward::enumToString(WardName ward){
     std::string result;
 
     switch(ward){
-        case 0:
-            result = "BLUE";
-            break;
-        case 1:
-            result = "RED";
-            break;
-        case 2:
-            result = "GREEN";
-            break;
-        case 3:
-            result = "YELLOW";
-            break;
-        case 4:
-            result = "ORANGE";
-            break;
+        case WardName::BLUE: return "BLUE";
+        case WardName::RED: return "RED";
+        case WardName::GREEN: return "GREEN";
+        case WardName::YELLOW: return "YELLOW";
+        case WardName::ORANGE: return "ORANGE";
     }
-
-    return result;
 }

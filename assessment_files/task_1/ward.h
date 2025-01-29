@@ -3,9 +3,10 @@
 
 #include <iostream>
 
-#include "patientRegister.h"
+class PatientRegister;
 
-#define WARD_NUM    5
+#include "patientRegister.h"
+#include "patient.h"
 
 enum WardName {
     BLUE,
@@ -21,14 +22,17 @@ class Ward {
         ~Ward();
 
         void addPatient(std::string name, std::string dob, WardName ward);
+        void removePatient(std::string regNum);
         int getPatientTotals();
         int getWardSize(WardName ward);
-        WardName getWard(std::string regNum);
+        void getWard(std::string regNum);
 
-        Ward operator[](const Ward& other);
+        void operator[](const std::string regNum);
 
 
     private:
+        std::string enumToString(WardName ward);
+
         PatientRegister* head;
 
 };
