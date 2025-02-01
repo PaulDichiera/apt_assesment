@@ -10,7 +10,7 @@ LinkedList::~LinkedList(){
 
 }
 
-void LinkedList::addPatient(std::string name, std::string dob, std::string regNum, std::string ward){
+void LinkedList::addPatient(std::string name, std::string dob, std::string regNum){
     Patient* newNode = new Patient(name, dob, regNum);
     if(patientHead == nullptr){
         patientHead = newNode;

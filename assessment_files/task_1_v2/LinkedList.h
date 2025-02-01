@@ -9,7 +9,7 @@ class LinkedList {
         LinkedList();
         virtual ~LinkedList();
 
-        virtual void addPatient(std::string name, std::string dob, std::string regNum, std::string ward);
+        virtual void addPatient(std::string name, std::string dob, std::string regNum);
         virtual void removePatient(std::string regNum);
         virtual int registerSize();
 
