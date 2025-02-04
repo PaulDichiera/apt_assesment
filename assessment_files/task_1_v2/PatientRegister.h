@@ -17,6 +17,8 @@ class PatientRegister : public LinkedList {
         PatientRegister* nextRegister;
         std::string wardName;
 
+        // Patient* operator[](const std::string regNum);
+
     private:
     
 };

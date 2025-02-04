@@ -23,3 +23,6 @@ $(TARGET) : $(OBJECTS)
 
 clean:
 	rm -f $(OBJECTS) $(TARGET)
+
+run: all
+	./$(TARGET) patientList.txt

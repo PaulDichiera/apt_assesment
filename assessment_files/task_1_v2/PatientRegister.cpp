@@ -55,3 +55,8 @@ void PatientRegister::checkDupe(std::string regNum){
         }
     }
 }
+
+// Patient* PatientRegister::operator[](const std::string regNum){
+
+//     return returnPatient(regNum);
+// }

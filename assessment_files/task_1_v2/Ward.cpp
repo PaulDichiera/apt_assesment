@@ -82,6 +82,19 @@ std::string Ward::getPatientWard(std::string regNum){
     return ward;
 }
 
+Patient* Ward::operator[](std::string regNum){
+    PatientRegister* tempNode = registerHead;
+    Patient* tempPatient = nullptr;
+    std::cout << regNum << std::endl;
+    while(tempNode != nullptr){
+        if(tempNode->checkPatient(regNum)){
+            tempPatient =  tempNode->returnPatient(regNum);
+        }
+        tempNode = tempNode->nextRegister;
+    }
+    return tempPatient;
+}
+
 std::string Ward::getWardString(int wardIndex){
 
     switch(static_cast<WardName>(wardIndex)){

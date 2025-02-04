@@ -26,6 +26,8 @@ class Ward {
         int getWardFullTotals();
         int getWardTotals(std::string ward);
         std::string getPatientWard(std::string regNum);
+
+        Patient* operator[](std::string regNum);
     
     private:
     std::string getWardString(int wardIndex);
